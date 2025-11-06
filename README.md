@@ -114,10 +114,13 @@ Os diagramas e documentação técnica estão disponíveis na pasta [`/docs`](./
 #### Cardápio - Exibição dos cupcakes e carrinho de compras 
 <img width="1234" height="950" alt="image" src="https://github.com/user-attachments/assets/29da51ed-98d5-414b-807e-1c7868eac09b" />
 
-#### Pedido Formulário de encomendas personalizadas 
+#### Pedido - Formulário de encomendas do cardápio
 <img width="1562" height="796" alt="image" src="https://github.com/user-attachments/assets/544b9591-1abb-43c4-a89a-637557c3cf3c" />
 
-#### Admin Gerenciamento de pedidos com filtros e status 
+#### Pedido - Formulário de encomenda personalizada
+<img width="1176" height="956" alt="image" src="https://github.com/user-attachments/assets/9f6d60d6-5975-474e-892a-b9808e1a0acd" />
+
+#### Admin - Gerenciamento de pedidos com filtros e status 
 <img width="1356" height="902" alt="image" src="https://github.com/user-attachments/assets/53bbfdf0-98a9-47ac-a3ad-d9332768d7e7" />
 
 ---
