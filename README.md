@@ -37,7 +37,7 @@ E na área administrativa, é possível:
 
 ### 1. Clonar o repositório
 ```bash
-git clone https://github.com/SEU-USUARIO/cupcake-store.git
+git clone git clone https://github.com/Oliveira-byte/cupcake-store-PIT-II-2025.git
 cd cupcake-store/backend
 ```
 
@@ -90,6 +90,19 @@ Os diagramas e documentação técnica estão disponíveis na pasta [`/docs`](./
 - **Diagrama Entidade-Relacionamento (DER)**
 - **Dicionário de Dados**
 - **Modelo Lógico**
+
+---
+
+### Visualização dos Diagramas
+
+#### 🎯 Diagrama de Casos de Uso
+![Diagrama de Casos de Uso](./doc/diagramas/Diagrama%20Casos%20de%20Uso.drawio%20(1).png)
+
+#### 🧱 Diagrama de Classes
+![Diagrama de Classes](./doc/diagramas/Diagrama%20de%20Classes.drawio%20(1).png)
+
+#### 🗄️ DER – Diagrama Entidade-Relacionamento
+![DER](./doc/diagramas/Diagrama%20de%20Entidade-Relacionamento%20DER.drawio.png)
 
 ---
 
