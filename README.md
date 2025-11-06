@@ -79,6 +79,9 @@ cd backend
 venv\Scripts\activate
 python -m unittest discover -s tests
 ```
+Retorno esperado:
+<img width="937" height="193" alt="image" src="https://github.com/user-attachments/assets/10e60a85-f35c-40e0-9ea6-edad1d08494d" />
+
 ---
 
 ## 🧠 Modelagem e Documentação
