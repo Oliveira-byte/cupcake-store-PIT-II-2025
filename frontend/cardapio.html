@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Cardápio - Cupcake Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    #carrinho {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 320px;
+      height: 100vh;
+      background: #fff;
+      box-shadow: -4px 0 16px rgba(0,0,0,0.1);
+      padding: 1rem;
+      display: none;
+      z-index: 999;
+    }
+    #form-checkout {
+      display: none;
+      max-width: 500px;
+      margin: 2rem auto;
+    }
+    
+.checkout-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(2px);
+  z-index: 900; /* abaixo do form, acima do conteúdo */
+}
+
+.checkout-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(95%, 520px);
+  z-index: 901; /* um pouquinho acima do overlay */
+}
+
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-light bg-light shadow-sm mb-4">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">🧁 Cupcake Store</a>
+      <button class="btn btn-primary" onclick="mostrarCarrinho()">🛒 Ver Carrinho (<span id="qtd-carrinho">0</span>)</button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1 class="mb-4">🧁 Cardápio</h1>
+    <p class="text-muted">Escolha suas delícias e finalize ali embaixo 🍓</p>
+    <div class="row" id="lista-produtos">
+      <p>🍰 Carregando cardápio...</p>
+    </div>
+  </div>
+
+  <!-- Carrinho lateral -->
+  <div id="carrinho">
+    <h5>🛒 Carrinho</h5>
+    <div id="itens-carrinho"></div>
+    <hr>
+    <p><strong>💰 Total: R$ <span id="total-carrinho">0.00</span></strong></p>
+    <button class="btn btn-success w-100 mb-2" onclick="abrirFormulario()">✅ Finalizar pedido</button>
+    <button class="btn btn-outline-secondary w-100" onclick="fecharCarrinho()">❌ Fechar</button>
+  </div>
+
+  <!-- Formulário de checkout na página -->
+  <!-- Overlay translúcido -->
+<div id="checkout-overlay" class="checkout-overlay" style="display: none;"></div>
+
+<!-- Formulário de checkout centralizado -->
+<div id="form-checkout" class="card shadow-sm checkout-modal" style="display: none;">
+  <div class="card-body">
+    <h4 class="mb-3">💌 Dados do cliente</h4>
+    <p class="text-muted">Preencha para concluir o pedido.</p>
+    <form id="checkout">
+      <div class="mb-3">
+        <label class="form-label">👤 Nome *</label>
+        <input type="text" class="form-control" name="nome" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">📧 E-mail *</label>
+        <input type="email" class="form-control" name="email" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">📱 Telefone *</label>
+        <input type="text" class="form-control" name="telefone" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">📝 Observações do pedido</label>
+        <textarea class="form-control" name="descricao" rows="3" placeholder="Ex: sem lactose, entregar à tarde..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">🚀 Enviar pedido</button>
+      <button type="button" class="btn btn-link" onclick="fecharFormulario()">Cancelar</button>
+    </form>
+    <div id="msg-checkout" class="alert d-none mt-3" role="alert"></div>
+  </div>
+</div>
+
+  <script>
+    const API_PRODUTOS = "http://127.0.0.1:5000/produtos";
+    const API_PEDIDO = "http://127.0.0.1:5000/pedido";
+
+    let carrinho = [];
+
+    // carregar produtos
+    fetch(API_PRODUTOS)
+      .then(r => r.json())
+      .then(lista => {
+        const div = document.getElementById('lista-produtos');
+        div.innerHTML = "";
+        lista.forEach(p => {
+          const img = p.imagem_url && p.imagem_url !== "" ? p.imagem_url : "img/default.jpg";
+          div.innerHTML += `
+            <div class="col-md-4 mb-3">
+              <div class="card h-100">
+                <img src="${img}" class="card-img-top" alt="${p.nome}">
+                <div class="card-body">
+                  <h5 class="card-title">${p.nome}</h5>
+                  <p class="card-text">${p.descricao ?? ''}</p>
+                  <p class="fw-bold">R$ ${p.preco}</p>
+                  <button class="btn btn-outline-primary btn-sm" onclick='adicionarCarrinho(${p.id_produto}, "${p.nome}", ${p.preco})'>➕🛒 Adicionar ao carrinho</button>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+      });
+
+    function adicionarCarrinho(id, nome, preco) {
+      const existente = carrinho.find(item => item.id_produto === id);
+      if (existente) {
+        existente.quantidade += 1;
+      } else {
+        carrinho.push({ id_produto: id, nome, preco: Number(preco), quantidade: 1 });
+      }
+      atualizarCarrinhoUI();
+    }
+
+    function atualizarCarrinhoUI() {
+      const divItens = document.getElementById('itens-carrinho');
+      const spanQtd = document.getElementById('qtd-carrinho');
+      const spanTotal = document.getElementById('total-carrinho');
+
+      divItens.innerHTML = "";
+      let total = 0;
+      let qtd = 0;
+
+      carrinho.forEach((item, idx) => {
+        const subtotal = item.preco * item.quantidade;
+        total += subtotal;
+        qtd += item.quantidade;
+
+        divItens.innerHTML += `
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: .5rem;">
+            <div>
+              <strong>${item.nome}</strong><br>
+              <small>R$ ${item.preco} x ${item.quantidade}</small>
+            </div>
+            <div>
+              <button class="btn btn-sm btn-light" onclick="alterarQtd(${idx}, -1)">➖</button>
+              <button class="btn btn-sm btn-light" onclick="alterarQtd(${idx}, 1)">➕</button>
+            </div>
+          </div>
+        `;
+      });
+
+      spanQtd.textContent = qtd;
+      spanTotal.textContent = total.toFixed(2);
+    }
+
+    function alterarQtd(index, delta) {
+      carrinho[index].quantidade += delta;
+      if (carrinho[index].quantidade <= 0) {
+        carrinho.splice(index, 1);
+      }
+      atualizarCarrinhoUI();
+    }
+
+    function mostrarCarrinho() {
+      document.getElementById('carrinho').style.display = 'block';
+    }
+    function fecharCarrinho() {
+      document.getElementById('carrinho').style.display = 'none';
+    }
+
+    function abrirFormulario() {
+  if (carrinho.length === 0) {
+    alert("🧺 Carrinho vazio.");
+    return;
+  }
+  document.getElementById('checkout-overlay').style.display = 'block';
+  document.getElementById('form-checkout').style.display = 'block';
+}
+
+function fecharFormulario() {
+  document.getElementById('checkout-overlay').style.display = 'none';
+  document.getElementById('form-checkout').style.display = 'none';
+}
+
+    const form = document.getElementById('checkout');
+    const msg = document.getElementById('msg-checkout');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const dados = {
+        nome: form.nome.value,
+        email: form.email.value,
+        telefone: form.telefone.value,
+        descricao: form.descricao.value,
+        itens: carrinho
+      };
+
+      fetch(API_PEDIDO, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(dados)
+      })
+      .then(r => r.json())
+      .then(resp => {
+        msg.classList.remove('d-none', 'alert-danger');
+        msg.classList.add('alert', 'alert-success');
+        msg.textContent = resp.message || "🎉 Pedido enviado com sucesso!";
+        carrinho = [];
+        atualizarCarrinhoUI();
+        form.reset();
+      })
+      .catch(err => {
+        console.error(err);
+        msg.classList.remove('d-none', 'alert-success');
+        msg.classList.add('alert', 'alert-danger');
+        msg.textContent = "❌ Não foi possível enviar o pedido.";
+      });
+    });
+    // permite fechar o formulário clicando fora dele
+document.getElementById('checkout-overlay').addEventListener('click', fecharFormulario);
+  </script>
+</body>
+</html>
+
+  
+  <footer class="py-4 bg-light text-center mt-4">
+    <p class="mb-0">Danilo Ferreira de Oliveira – PIT II Engenharia de Software • 2025</p>
+  </footer>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>🧁 Cupcake Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .hero-img {
+      background-image: url("img/hero.jpg"); /* imagem de destaque */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #3d3d3d;
+      position: relative;
+      border-bottom-left-radius: 2rem;
+      border-bottom-right-radius: 2rem;
+    }
+
+    .hero-overlay {
+      background: rgba(255, 246, 250, 0.8);
+      padding: 3rem 2rem;
+      border-radius: 1.5rem;
+      max-width: 700px;
+    }
+
+    .hero-overlay h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+
+    .features {
+      background-color: var(--cor-fundo);
+      padding: 3rem 0;
+      border-radius: 1rem;
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-light bg-light shadow-sm mb-4">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">🧁 Cupcake Store</a>
+      <div>
+        <a href="pedido.html" class="btn btn-primary me-2">📦 Fazer Encomenda Personalizada</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Banner principal -->
+  <header class="hero-img mb-5">
+    <div class="hero-overlay">
+      <h1>Feitos com amor, recheados de sabor 💗</h1>
+      <p class="lead mt-3 mb-4">Cupcakes artesanais, ingredientes selecionados e um toque de carinho em cada mordida 🧁✨</p>
+      <a href="cardapio.html" class="btn btn-primary btn-lg me-2">Ver Cardápio 🍓</a>
+    </div>
+  </header>
+
+  <!-- Sessão de destaques -->
+  <section class="features container text-center mb-5">
+    <h2 class="mb-4">Por que escolher nossos cupcakes?</h2>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="feature-icon">🍰</div>
+        <h5>Sabores exclusivos</h5>
+        <p class="text-muted">Receitas originais e combinações irresistíveis para todos os gostos.</p>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="feature-icon">🧑‍🍳</div>
+        <h5>Produção artesanal</h5>
+        <p class="text-muted">Cada cupcake é preparado à mão com amor e atenção aos detalhes.</p>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="feature-icon">🚚</div>
+        <h5>Entrega rápida</h5>
+        <p class="text-muted">Peça online e receba suas delícias fresquinhas na porta da sua casa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer class="py-4 bg-light text-center mt-4">
+    <p class="mb-0"> Danilo Ferreira de Oliveira – PIT II - Engenharia de Software • 2025 </p>
+    <a href="admin.html" class="text-muted small text-decoration-none d-inline-flex align-items-center" style="opacity:0.7;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shield-lock me-1" viewBox="0 0 16 16">
+      <path d="M5.5 9a1.5 1.5 0 1 0 3 0 1.5 1.5 0 0 0-3 0z"/>
+      <path d="M7.467.133a.5.5 0 0 1 .566 0l6 4A.5.5 0 0 1 14 4.5v5c0 3.188-2.216 5.879-5.012 6.815a.5.5 0 0 1-.316 0C5.216 15.379 3 12.688 3 9.5v-5a.5.5 0 0 1 .233-.367l6-4zM4 5v4.5c0 2.782 1.934 5.036 4 5.92 2.066-.884 4-3.138 4-5.92V5L8 1.5 4 5z"/>
+    </svg>
+    <span>Área administrativa</span>
+  </a>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
