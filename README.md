@@ -29,7 +29,7 @@ E na área administrativa, é possível:
 | **Back-end** | Python 3, Flask, Flask-CORS |
 | **Banco de Dados** | SQLite 3 |
 | **Modelagem** | UML (Casos de Uso, Classes, DER) |
-| **Ferramentas** | VS Code, Draw.io, GitHub |
+| **Ferramentas** | VS Code, Draw.io, GitHub e Postman |
 
 ---
 
