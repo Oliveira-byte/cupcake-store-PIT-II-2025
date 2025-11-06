@@ -1,4 +1,4 @@
-#🧁 Cupcake Store – Projeto Integrador Transdisciplinar II
+# 🧁 Cupcake Store – Projeto Integrador Transdisciplinar II
 
 **Autor:** Danilo Ferreira de Oliveira  
 **Curso:** Engenharia de Software – Cruzeiro do Sul Virtual  
