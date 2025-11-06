@@ -122,8 +122,6 @@ Os diagramas e documentação técnica estão disponíveis na pasta [`/docs`](./
 
 ---
 Desenvolvido por **Danilo Ferreira de Oliveira**  
-Projeto Integrador Transdisciplinar II – Engenharia de Software, 2025/2  
-Cruzeiro do Sul Virtual
----
-**Projeto desenvolvido para fins acadêmicos**
+
+Projeto desenvolvido para fins acadêmicos
 ---
