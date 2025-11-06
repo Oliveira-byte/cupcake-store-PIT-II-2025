@@ -16,14 +16,13 @@ DB_DIR = os.path.join(BASE_DIR, "db")
 DB_PATH = os.path.join(DB_DIR, "cupcake_store.db")
 SCHEMA_PATH = os.path.join(DB_DIR, "schema.sql")
 
-ADMIN_TOKEN = "admin123"  # o mesmo que usamos na área admin
+ADMIN_TOKEN = "admin123"  
 
 
 def get_conn():
     """Abre conexão com o banco (e cria pasta db se não existir)."""
     os.makedirs(DB_DIR, exist_ok=True)
     conn = sqlite3.connect(DB_PATH)
-    # pra conseguir acessar colunas por nome
     conn.row_factory = sqlite3.Row
     return conn
 
@@ -103,7 +102,7 @@ def criar_pedido():
     email = data.get("email")
     telefone = data.get("telefone")
     observacoes = data.get("descricao")  
-    itens = data.get("itens", [])  # pode vir vazio (encomenda personalizada)
+    itens = data.get("itens", [])  
 
     if not nome:
         return jsonify({"message": "Nome é obrigatório."}), 400
