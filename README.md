@@ -11,7 +11,7 @@
 O **Cupcake Store** é um sistema web desenvolvido como parte do **Projeto Integrador Transdisciplinar II**, com foco em integração entre **Front-end e Back-end**, modelagem de banco de dados e práticas ágeis de desenvolvimento.
 
 O sistema simula uma confeitaria online, onde clientes podem:
-- Visualizar o cardápio de cupcakes gourmet 🍰  
+- Visualizar o cardápio de cupcakes gourmet  
 - Adicionar produtos ao carrinho e realizar pedidos  
 - Fazer encomendas personalizadas via formulário  
 
