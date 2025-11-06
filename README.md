@@ -95,28 +95,29 @@ Os diagramas e documentação técnica estão disponíveis na pasta [`/docs`](./
 
 ### Visualização dos Diagramas
 
-#### 🎯 Diagrama de Casos de Uso
+#### Diagrama de Casos de Uso
 ![Diagrama de Casos de Uso](./doc/diagramas/Diagrama%20Casos%20de%20Uso.drawio%20(1).png)
 
-#### 🧱 Diagrama de Classes
+#### Diagrama de Classes
 ![Diagrama de Classes](./doc/diagramas/Diagrama%20de%20Classes.drawio%20(1).png)
 
-#### 🗄️ DER – Diagrama Entidade-Relacionamento
+#### DER – Diagrama Entidade-Relacionamento
 ![DER](./doc/diagramas/Diagrama%20de%20Entidade-Relacionamento%20DER.drawio.png)
 
 ---
 
 ## 📸 Prints do Sistema
 
-| Tela | Descrição |
-|-------|------------|
-| 🏠 Index | Página inicial com banner e navegação |
+#### Index - Página inicial com banner e navegação 
 <img width="1192" height="907" alt="image" src="https://github.com/user-attachments/assets/c0c6193e-5d1d-40f0-8ea6-7f04a81ac981" />
-| 🍰 Cardápio | Exibição dos cupcakes e carrinho de compras |
+
+#### Cardápio - Exibição dos cupcakes e carrinho de compras 
 <img width="1234" height="950" alt="image" src="https://github.com/user-attachments/assets/29da51ed-98d5-414b-807e-1c7868eac09b" />
-| 📦 Pedido | Formulário de encomendas personalizadas |
+
+#### Pedido Formulário de encomendas personalizadas 
 <img width="1562" height="796" alt="image" src="https://github.com/user-attachments/assets/544b9591-1abb-43c4-a89a-637557c3cf3c" />
-| 🔐 Admin | Gerenciamento de pedidos com filtros e status |
+
+#### Admin Gerenciamento de pedidos com filtros e status 
 <img width="1356" height="902" alt="image" src="https://github.com/user-attachments/assets/53bbfdf0-98a9-47ac-a3ad-d9332768d7e7" />
 
 ---
