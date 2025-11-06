@@ -33,38 +33,6 @@ E na área administrativa, é possível:
 
 ---
 
-## 🗂️ Estrutura de Pastas
-
-```
-Projeto-Integrador-Transdisciplinar-II-main/
-│
-├── backend/
-│   ├── app.py
-│   ├── db/
-│   │   ├── schema.sql
-│   │   └── cupcake_store.db
-│   └── __pycache__/
-│
-├── frontend/
-│   ├── index.html
-│   ├── cardapio.html
-│   ├── pedido.html
-│   ├── admin.html
-│   ├── css/
-│   │   └── style.css
-│   └── img/
-│
-└── docs/
-    ├── PIT_atualizado.pdf
-    ├── Diagrama_Casos_de_Uso.png
-    ├── Diagrama_de_Classes.png
-    ├── DER.png
-    ├── Dicionario_de_Dados.md
-    └── README.md
-```
-
----
-
 ## 🚀 Como Executar o Projeto Localmente
 
 ### 🧩 1. Clonar o repositório
