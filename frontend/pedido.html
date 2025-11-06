@@ -97,7 +97,7 @@
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
-      // pega os campos
+      
       const nome = form.nome.value;
       const email = form.email.value;
       const telefone = form.telefone.value;
@@ -106,7 +106,6 @@
       const tema = form.tema.value;
       const descricao_extra = form.descricao.value;
 
-      // monta uma descrição bonitinha pra ir pro back
       const descricao_final = `
 Encomenda personalizada:
 - Quantidade: ${quantidade || "não informado"}
@@ -123,7 +122,7 @@ Encomenda personalizada:
           email,
           telefone,
           descricao: descricao_final
-          // não estamos mandando itens aqui porque é uma encomenda aberta
+          
         })
       })
       .then(r => r.json())
