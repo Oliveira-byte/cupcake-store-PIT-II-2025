@@ -66,7 +66,19 @@ Acesse:
 ```
 http://127.0.0.1:5500/index.html
 ```
+## Testes Automatizados
 
+O projeto contém testes unitários na pasta [`/backend/tests`](./backend/tests), validando:
+- Disponibilidade da rota `/produtos` (status 200)
+- Integridade dos campos retornados (nome e preço)
+- Validação de valores positivos de preço
+
+Para executar os testes:
+```bash
+cd backend
+venv\Scripts\activate
+python -m unittest discover -s tests
+```
 ---
 
 ## 🧠 Modelagem e Documentação
@@ -95,5 +107,9 @@ Os diagramas e documentação técnica estão disponíveis na pasta [`/docs`](./
 <img width="1356" height="902" alt="image" src="https://github.com/user-attachments/assets/53bbfdf0-98a9-47ac-a3ad-d9332768d7e7" />
 
 ---
-**Projeto desenvolvido para fins acadêmicos – Cruzeiro do Sul Virtual.**
+Desenvolvido por **Danilo Ferreira de Oliveira**  
+Projeto Integrador Transdisciplinar II – Engenharia de Software, 2025/2  
+Cruzeiro do Sul Virtual
+---
+**Projeto desenvolvido para fins acadêmicos**
 ---
